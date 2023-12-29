@@ -4,10 +4,21 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Radio from '@mui/material/Radio';
 import { Button, Checkbox, Fab, FormControl, FormControlLabel, FormLabel, Grid, RadioGroup, TextField } from '@mui/material';
 import axiosInst from '../axiosInst'
+import { useNavigate } from 'react-router-dom';
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
   const [filter, setFilter] = useState('all');
+  const navigate = useNavigate()
+    useEffect(() => {
+        axiosInst.get('/user/view')
+          .then(res => setTodos(res.data))
+          .catch((error) => console.error('Error:', error));
+      }, []);
+      
+      const handleClick = (e) => {
+        navigate('/update')
+      };
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   
