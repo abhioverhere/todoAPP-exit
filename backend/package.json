@@ -1,5 +1,5 @@
 {
-  "name": "ictexamportal",
+  "name": "todoapp",
   "version": "1.0.0",
   "description": "Todo APP",
   "main": "server.js",
