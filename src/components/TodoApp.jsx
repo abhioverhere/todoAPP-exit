@@ -35,14 +35,14 @@ const TodoApp = () => {
 
   const delTodo = (index) => {
     const newTodos = [...todos];
-    const toDelete = newTodos[index];
     newTodos.splice(index, 1);
     setTodos(newTodos);
 
-    axiosInst.delete(`/user/delete/${toDelete}`, toDelete)
+    axiosInst.put(`/user/update`, todos)
     .then(res => console.log('Success:', res.data))
     .catch((error) => console.error('Error:', error));    
-  };
+};
+
 
   const handleFiltering = (e) => {
     setFilter(e.target.value);
@@ -112,9 +112,7 @@ const TodoApp = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={4} lg={4} xl={12}></Grid>
     </Grid>
-    </Grid>
-    
+    </Grid>    
   );
 };
-
 export default TodoApp;
