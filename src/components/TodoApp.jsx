@@ -9,16 +9,11 @@ const TodoApp = () => {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
   const [filter, setFilter] = useState('all');
-  const navigate = useNavigate()
     useEffect(() => {
         axiosInst.get('/user/view')
           .then(res => setTodos(res.data))
           .catch((error) => console.error('Error:', error));
       }, []);
-      
-      const handleClick = (e) => {
-        navigate('/update')
-      };
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   
