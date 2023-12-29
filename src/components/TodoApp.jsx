@@ -4,7 +4,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Radio from '@mui/material/Radio';
 import { Button, Checkbox, Fab, FormControl, FormControlLabel, FormLabel, Grid, RadioGroup, TextField } from '@mui/material';
 import axiosInst from '../axiosInst'
-import { useNavigate } from 'react-router-dom';
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
@@ -14,9 +13,7 @@ const TodoApp = () => {
           .then(res => setTodos(res.data))
           .catch((error) => console.error('Error:', error));
       }, []);
-
-  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-  
+  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };  
 
   const addTodo = () => {
     if(input===''){
@@ -35,7 +32,6 @@ const TodoApp = () => {
     .then(response => console.log('Success:', response.data))
     .catch((error) => console.error('Error:', error));
   };
-
 
   const delTodo = (index) => {
     const newTodos = [...todos];
@@ -97,12 +93,12 @@ const TodoApp = () => {
             if (filter === 'completed') return todo.completed;
             if (filter === 'incomplete') return !todo.completed;
             }).map((todo, index) => (
-              <Grid key={index}>
-                <Grid container>
+              <Grid key={index} marginBottom='5%'>
+                <Grid container marginTop='2.5%' >
                   <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
                     <Checkbox {...label} color="primary" checked={todo.completed} onChange={() => toggleTick(index)} />
                   </Grid>
-                  <Grid item xs={8} sm={8} md={8} lg={8} xl={8}>
+                  <Grid item xs={8} sm={8} md={8} lg={8} xl={8} >
                     <span style={{ textDecoration: todo.completed ? 'line-through' : '' }}>{todo.text}</span>
                   </Grid>
                   <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
@@ -112,7 +108,7 @@ const TodoApp = () => {
                   </Grid>                      
                 </Grid>                            
             </Grid>))}
-            <Button variant="contained" fullWidth onClick={handleSubmit}>Update Task List</Button>
+            <Button variant="contained" fullWidth onClick={handleSubmit} >Update Task List</Button>
         </Grid>
         <Grid item xs={12} sm={12} md={4} lg={4} xl={12}></Grid>
     </Grid>
